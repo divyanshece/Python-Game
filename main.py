@@ -1,4 +1,4 @@
-import pygame
+import pygame,asyncio
 import random
 import math
 
@@ -223,7 +223,7 @@ def generate_tiles():
     return tiles
 
 
-def main(window):
+async def main(window):
     clock = pygame.time.Clock()
     run = True
 
@@ -248,9 +248,10 @@ def main(window):
                     move_tiles(window, tiles, clock, "down")
 
         draw(window, tiles)
+        await asyncio. sleep(0)
 
     pygame.quit()
 
 
 if __name__ == "__main__":
-    main(WINDOW)
+    asyncio.run(main(WINDOW))
